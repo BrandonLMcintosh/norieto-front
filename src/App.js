@@ -72,13 +72,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      <UserContext.Provider value={{user, setUser}}>
+      <UserContext.Provider value={{ user, setUser }}>
         <div className="App">
           <Header />
-          <Routes login={login} register={register}/>
+          <Routes login={login} register={register} />
           <Footer />
         </div>
-      </UserContext>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 }
