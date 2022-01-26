@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from "react";
+import { BrowserRouter } from "react-router-dom";
+import Routes from "./Routes";
+import NorietoApi from "./api";
+import useToken from "./hooks/useToken";
+import "./App.css";
+import jwt from "jsonwebtoken";
+import UserContext from "./UserContext";
+import Header from "./components/nav/header/Header";
+import Footer from "./components/nav/footer/Footer";
+
+import Routes from "./Routes";
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [loaded, setLoaded] = useState(false);
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useToken();
+  const [map, setMap] = useState({});
+
+  useEffect(() => {
+    async function getUser(){
+      if(token){
+        try{
+          let {username} = jwt.decode(token);
+          let user = await NorietoApi.userGet(username);
+          setUser(user);
+          setMap(user.map);
+          
+        }
+      }
+    }
+  })
 }
 
 export default App;
