@@ -1,7 +1,7 @@
 import React from "react";
 
-function Port() {
+function PortMap() {
   return <div></div>;
 }
 
-export default Port;
+export default PortMap;
