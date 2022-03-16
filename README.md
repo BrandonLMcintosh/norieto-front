@@ -25,9 +25,9 @@ Data structure looks as follows:
   }
 ``
 
--Main devices array
-  device name: array of length = num of ports on device
-    each index in array referencing index in main devices array, or null if not connected
+- Main devices array
+    * device name: array of length = num of ports on device
+        - each index in array referencing index in main devices array, or null if not connected
     
  
 
